@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - La Discursiva</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Resetting styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-image: url('path/to/fondo1.jpg'); /* Background image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Make background dynamic */
+            color: #333; /* Dark text color */
+        }
+
+        h2 {
+            margin: 30px 0; /* Space above and below title */
+            text-align: center; /* Center title */
+            font-size: 3rem; /* Increased font size */
+            color: white; /* White text color */
+        }
+
+        /* Logo styling */
+        .logo {
+            position: absolute;
+            top: 20px; /* Adjust vertical position */
+            left: 20px; /* Adjust horizontal position */
+            width: 50px; /* Adjust width of the logo */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        /* Image grid styling */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns */
+            gap: 20px; /* Space between images */
+            margin: 20px;
+        }
+
+        .image-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer; /* Change cursor to pointer for clickable images */
+            border: 2px solid rgba(0, 0, 0, 0.3); /* Add border for distinction */
+            border-radius: 10px; /* Rounded corners */
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+            transform: scale(0.85); /* More zoom out effect */
+            transition: transform 0.2s; /* Smooth scaling transition */
+        }
+
+        .image-item:hover {
+            transform: scale(1); /* Scale up on hover */
+        }
+
+        .image-item img {
+            width: 100%; /* Make images responsive */
+            height: 210px; /* Fixed height */
+            object-fit: cover; /* Cover the area while maintaining aspect ratio */
+            display: block;
+        }
+
+        .description {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1em; /* Adjust size as needed */
+            padding: 5px; /* Padding for visibility */
+        }
+
+        /* Description details */
+        .details {
+            font-size: 0.9em; /* Smaller font for details */
+            line-height: 1.5; /* Space between lines */
+            color: #333; /* Set a color for visibility */
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Black background with transparency */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        footer {
+            text-align: center; /* Center footer text */
+            margin: 20px 0; /* Space above and below footer */
+            color: #fff; /* White footer text */
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">
+        <img src="path/to/home.webp" alt="La Discursiva Logo" class="logo"> <!-- Replace with your logo path -->
+    </a>
+    
+    <main>
+        <section id="events">
+            <h2>Events</h2>
+            <div class="image-grid">
+                <div class="image-item" onclick="openModal('path/to/summer.jpg')">
+                    <img src="path/to/summer.jpg" alt="Summer Festival">
+                    <div class="description">
+                        <strong>Summer Festival</strong><br>
+                        <div class="details">
+                            Location: Barbacoa Park, Reus<br>
+                            Date: July 13, 2024<br>
+                            Collaborations: Niloga Boys, Family & Friends, Victor Güell
+                        </div>
+                    </div>
+                </div>
+                <div class="image-item" onclick="openModal('path/to/perlo.jpg')">
+                    <img src="path/to/perlo.jpg" alt="Description for Image 2">
+                    <div class="description">
+                        <strong>XtraPerlo</strong><br>
+                        <div class="details">
+                            Location: XtraPerlo, Reus<br>
+                            Date: March 15, 2024<br>
+                            Collaborations: DjMuca
+                        </div>
+                    </div>
+                </div>
+                <div class="image-item" onclick="openModal('path/to/Carnaval1.jpg')">
+                    <img src="path/to/Carnaval1.jpg" alt="Description for Image 3">
+                    <div class="description">
+                        <strong>Carnaval Night</strong><br>
+                        <div class="details">
+                            Location: Centric Club, Reus<br>
+                            Date: February 10, 2024<br>
+                            Collaborations: Family & Friends
+                        </div>
+                    </div>
+                </div>
+                <div class="image-item" onclick="openModal('path/to/centric.jpg')">
+                    <img src="path/to/centric.jpg" alt="Description for Image 4">
+                    <div class="description">
+                        <strong>Christmas Edition</strong><br>
+                        <div class="details">
+                            Location: Centric Club, Reus<br>
+                            Date: December 25, 2023<br>
+                        </div>
+                    </div>
+                </div>
+                <!-- Second row of images -->
+                <div class="image-item" onclick="openModal('path/to/image5.jpg')">
+                    <img src="path/to/perlo2.jpg" alt="Description for Image 5">
+                    <div class="description">
+                        <strong>XtraPerlo</strong><br>
+                        <div class="details">
+                            Location: XtraPerlo, Reus<br>
+                            Date: December 12, 2023<br>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-item" onclick="openModal('path/to/image6.jpg')">
+                    <img src="path/to/botanic.jpg" alt="Description for Image 6">
+                    <div class="description">
+                        <strong>The Botanical Night</strong><br>
+                        <div class="details">
+                            Location: Le Café des Stagiaries, Bangkok<br>
+                            Date: April 3, 2023<br>
+                            Collaborations: House of Lolo
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="Modal Image">
+    </div>
+
+    <footer>
+        <p>&copy; 2023 La Discursiva. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+            modalImage.src = imageSrc; // Set the source of the modal image
+            modal.style.display = "flex"; // Display the modal
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none"; // Hide the modal
+        }
+    </script>
+</body>
+</html>
