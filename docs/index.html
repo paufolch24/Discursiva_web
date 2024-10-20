@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet"> <!-- Added Gugi font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <!-- Added Montserrat font -->
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* Reset margins and paddings */
         * {
@@ -18,161 +18,187 @@
         }
 
         body {
-            background-color: #fff; /* White background for the body */
-            font-family: Arial, sans-serif; /* Default font */
-            color: #333; /* Dark gray for standard readability */
+            background-color: #fff;
+            font-family: Arial, sans-serif;
+            color: #333;
             line-height: 1.6;
-            min-height: 100vh; /* Ensure body covers full viewport height */
+            min-height: 100vh;
             display: flex;
-            flex-direction: column; /* Arrange children in a column */
-            overflow-x: hidden; /* Prevent horizontal scrollbars */
+            flex-direction: column;
+            overflow-x: hidden;
         }
 
-        /* Background Image */
         .background {
-            background-image: url('path/to/fondo1.jpg'); /* Replace with your background image path */
-            background-size: cover; /* Cover the entire area */
-            background-position: center; /* Center the image */
-            position: fixed; /* Fixed position to cover the whole viewport */
+            background-image: url('path/to/fondo1.jpg');
+            background-size: cover;
+            background-position: center;
+            position: fixed;
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
-            z-index: -1; /* Place behind content */
+            z-index: -1;
         }
 
-        /* Header Styling */
         header {
-            display: flex; /* Use flexbox for alignment */
-            justify-content: space-between; /* Space out items */
-            align-items: center; /* Center items vertically */
-            z-index: 1; /* Ensure it appears above the background */
-            padding: 10px; /* Add some padding */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1;
+            padding: 10px;
         }
 
         header h1 {
-            color: #fff; /* White text for the title */
-            font-size: 2.5rem; /* Smaller font size for the title */
-            font-family: 'Arial Black', sans-serif; /* Bold, modern font */
-            letter-spacing: 2px; /* Space between letters */
+            color: #fff;
+            font-size: 2.5rem;
+            font-family: 'Arial Black', sans-serif;
+            letter-spacing: 2px;
         }
 
-        /* Navigation Links */
         nav ul {
             list-style: none;
             display: flex;
-            align-items: center; /* Center items vertically */
-            margin-left: 20px; /* Move navigation slightly to the left */
+            align-items: center;
+            margin-left: 20px;
         }
 
         nav ul li {
-            margin-left: 15px; /* Adjust spacing between links */
+            margin-left: 15px;
         }
 
         nav ul li a {
-            color: #fff; /* White links for visibility */
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2rem; /* Bigger font size for the link */
+            font-size: 1.2rem;
             transition: color 0.3s;
         }
 
         nav ul li a:hover {
-            color: #b3e6ff; /* Light blue on hover */
+            color: #b3e6ff;
         }
 
-        /* Instagram Logo */
         .instagram-logo {
-            width: 30px; /* Adjust size as needed */
+            width: 30px;
             height: 30px;
-            margin-left: 10px; /* Space between link and logo */
-            cursor: pointer; /* Pointer cursor */
+            margin-left: 10px;
+            cursor: pointer;
         }
 
-        /* Main Content */
+        /* Language toggle styling */
+        .language-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -85 px;
+        }
+
+        .language-option {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 0 10px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        .language-option:hover {
+            color: #b3e6ff;
+        }
+
         main {
-            flex: 1; /* Allow main to take up remaining space */
-            padding: 20px; /* Reduced padding */
-            text-align: center; /* Center align text */
-            position: relative; /* Ensure it stays above the background */
-        }
-
-        /* Invisible Box */
-        .invisible-box {
-            position: absolute; /* Absolute positioning */
-            top: 50%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            transform: translate(-50%, -50%); /* Offset by half of its width/height */
-            width: 40vw; /* Width of the box */
-            height: 40vh; /* Height of the box */
-            background-color: transparent; /* Transparent background */
-            cursor: pointer; /* Pointer cursor */
-            z-index: 1; /* Ensure it appears above the background */
-        }
-
-        /* Letter Cart Style */
-        .letter-cart {
-            background-color: rgba(0, 0, 0, 0.8); /* Black background with transparency */
-            border: 2px solid #000; /* Black border */
-            border-radius: 5px; /* More rectangular corners */
-            padding: 40px; /* Space inside the cart */
-            display: inline-block; /* Center block */
-            max-width: 800px; /* Max width */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+            flex: 1;
+            padding: 20px;
+            text-align: center;
             position: relative;
-            margin: 20px auto; /* Center the cart */
-            display: none; /* Initially hidden */
-            opacity: 0; /* Start as invisible */
-            transition: opacity 0.5s; /* Smooth transition */
         }
 
-        /* Section Text */
+        .invisible-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40vw;
+            height: 40vh;
+            background-color: transparent;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .letter-cart {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #000;
+            border-radius: 5px;
+            padding: 40px;
+            display: inline-block;
+            max-width: 800px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            margin: 20px auto;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
         .letter-cart p {
-            color: #fff; /* White text for better contrast */
-            font-family: 'Gugi', cursive; /* Apply Gugi font */
-            font-size: 1.5rem; /* Increase font size for better clarity */
-            font-weight: bold; /* Bold text */
+            color: #fff;
+            font-family: 'Gugi', cursive;
+            font-size: 1.5rem;
+            font-weight: bold;
             margin-bottom: 20px;
-            text-align: center; /* Center text */
+            text-align: center;
         }
 
-        /* Close Button */
         .close-btn {
-            position: absolute; /* Position the button */
+            position: absolute;
             top: 10px;
             right: 10px;
-            background: none; /* No background */
-            border: none; /* No border */
-            color: #fff; /* White color */
-            font-size: 1.5rem; /* Increase size */
-            cursor: pointer; /* Pointer cursor */
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="background"></div> <!-- Background image div -->
+    <div class="background"></div>
 
-    <header>
-        <h1>La Discursiva</h1>
-        <nav>
-            <ul>
-                <li><a href="events.html">Events</a></li> <!-- Link to events page -->
-                <li>
-                    <a href="https://www.instagram.com/ladiscursiva/" target="_blank">
-                        <img src="path/to/inst.png" alt="Instagram Logo" class="instagram-logo"> <!-- Replace with your Instagram logo path -->
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <h1 class="title">La Discursiva</h1>
+    
+    <!-- Language container in the center -->
+    <div class="language-container">
+        <span class="language-option" id="catOption">CAT</span> |
+        <span class="language-option" id="engOption">ENG</span> |
+        <span class="language-option" id="espOption">ESP</span>
+    </div>
+
+    <!-- Navigation (Events and Instagram) on the right -->
+    <nav>
+        <ul>
+            <li><a href="events.html" id="eventsLink">Events</a></li>
+            <li>
+                <a href="https://www.instagram.com/ladiscursiva/" target="_blank">
+                    <img src="path/to/inst.png" alt="Instagram Logo" class="instagram-logo">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
 
     <main>
-        <div class="invisible-box" id="invisibleBox"></div> <!-- Invisible box in the center -->
+
+        <div class="invisible-box" id="invisibleBox"></div>
         
         <div class="letter-cart" id="letterCart">
             <button class="close-btn" id="closeBtn">&times;</button>
-            <p>Welcome to <strong>La Discursiva</strong>, a passionate cultural association originally from Reus, motivated by our love for deep conversations and dance. We are a group of friends with a profound enthusiasm for house and techno music, dedicated to creating spaces where our community can connect, express, and expand. Our mission is to explore new horizons, bringing people together in the spirit of art, music, and culture.</p>
-            <p>We are expanding our limits beyond our hometown, connecting with communities everywhere. For any business inquiries, feel free to reach out to us at <a href="mailto:ladiscursiva@gmail.com" style="color: #fff;">ladiscursiva@gmail.com</a>. Follow our journey on Instagram at <a href="https://instagram.com/ladiscursiva" target="_blank" style="color: #fff;">@ladiscursiva</a> for updates on our latest events and projects.</p>
+            <p id="welcomeText">Benvingut a <strong>La Discursiva</strong>, una passió cultural originària de Reus, motivada per la nostra amor per les converses profundes i la dansa. Som un grup d'amics amb un profund entusiasme per la música house i techno, dedicat a crear espais on la nostra comunitat pugui connectar, expressar-se i expandir-se. La nostra missió és explorar nous horitzons, unint les persones en l'esperit de l'art, la música i la cultura.</p>
+            <p id="contactText">Estem expandint els nostres límits més enllà de la nostra ciutat natal, connectant amb comunitats arreu. Per a qualsevol consulta comercial, no dubteu a contactar-nos a <a href="mailto:ladiscursiva@gmail.com" style="color: #fff;">ladiscursiva@gmail.com</a>. Seguiu el nostre viatge a Instagram a <a href="https://instagram.com/ladiscursiva" target="_blank" style="color: #fff;">@ladiscursiva</a> per actualitzacions sobre els nostres últims esdeveniments i projectes.</p>
         </div>
     </main>
 
@@ -182,17 +208,17 @@
             const letterCart = document.getElementById('letterCart');
             letterCart.style.display = 'block';
             setTimeout(() => {
-                letterCart.style.opacity = '1'; // Fade in
+                letterCart.style.opacity = '1';
             }, 10);
         }
 
         // Function to hide the letter cart
         function hideLetterCart() {
             const letterCart = document.getElementById('letterCart');
-            letterCart.style.opacity = '0'; // Fade out
+            letterCart.style.opacity = '0';
             setTimeout(() => {
-                letterCart.style.display = 'none'; // Hide after fade out
-            }, 500); // Match the transition duration
+                letterCart.style.display = 'none';
+            }, 500);
         }
 
         // Event listener for the invisible box
@@ -200,6 +226,42 @@
 
         // Close button event listener
         document.getElementById('closeBtn').addEventListener('click', hideLetterCart);
+
+        // Language toggle functionality
+        const texts = {
+            cat: {
+                welcome: "Benvingut a <strong>La Discursiva</strong>, una associació cultural originària de Reus, motivada per el nostra amor per les converses profundes i la dansa. Som un grup d'amics amb un profund entusiasme per la música house i techno, dedicat a crear espais on la nostra comunitat pugui connectar, expressar-se i expandir-se. La nostra missió és explorar nous horitzons, unint les persones en l'esperit de l'art, la música i la cultura.",
+                contact: "Estem expandint els nostres límits més enllà de la nostra ciutat natal, connectant amb comunitats arreu. Per a qualsevol consulta comercial, no dubteu a contactar-nos a <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Seguiu el nostre viatge a Instagram a <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> per actualitzacions sobre els nostres últims esdeveniments i projectes.",
+                events: "Esdeveniments"
+            },
+            eng: {
+                welcome: "Welcome to <strong>La Discursiva</strong>, a passionate cultural association originally from Reus, motivated by our love for deep conversations and dance. We are a group of friends with a profound enthusiasm for house and techno music, dedicated to creating spaces where our community can connect, express, and expand. Our mission is to explore new horizons, bringing people together in the spirit of art, music, and culture.",
+                contact: "We are expanding our limits beyond our hometown, connecting with communities everywhere. For any business inquiries, feel free to reach out to us at <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Follow our journey on Instagram at <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> for updates on our latest events and projects.",
+                events: "Events"
+            },
+            esp: {
+                welcome: "Bienvenido a <strong>La Discursiva</strong>, una apasionada asociación cultural originaria de Reus, motivada por nuestro amor por las conversaciones profundas y la danza. Somos un grupo de amigos con un profundo entusiasmo por la música house y techno, dedicados a crear espacios donde nuestra comunidad pueda conectar, expresarse y expandirse. Nuestra misión es explorar nuevos horizontes, uniendo a las personas en el espíritu del arte, la música y la cultura.",
+                contact: "Estamos expandiendo nuestros límites más allá de nuestra ciudad natal, conectando con comunidades en todas partes. Para cualquier consulta comercial, no dude en comunicarse con nosotros a <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Siga nuestro viaje en Instagram en <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> para actualizaciones sobre nuestros últimos eventos y proyectos.",
+                events: "Eventos"
+            }
+        };
+
+        // Event listeners for language options
+        document.getElementById('catOption').addEventListener('click', () => {
+            updateLanguage('cat');
+        });
+        document.getElementById('engOption').addEventListener('click', () => {
+            updateLanguage('eng');
+        });
+        document.getElementById('espOption').addEventListener('click', () => {
+            updateLanguage('esp');
+        });
+
+        function updateLanguage(language) {
+            document.getElementById('welcomeText').innerHTML = texts[language].welcome;
+            document.getElementById('contactText').innerHTML = texts[language].contact;
+            document.getElementById('eventsLink').textContent = texts[language].events;
+        }
     </script>
 </body>
 </html>

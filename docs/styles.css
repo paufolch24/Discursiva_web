@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'Disc Black';
+    src: url('fonts/disc_black.ttf') format('truetype');
+    font-weight: normal; /* Adjust if necessary */
+    font-style: normal; /* Adjust if necessary */
+}
+
+/* Existing styles... */
+
+/* Title Styling */
+.title {
+    font-family: 'Disc Black', sans-serif; /* Apply your font */
+    color: #fff; /* White text */
+    font-size: 2.5rem; /* Adjust size as necessary */
+    letter-spacing: 2px; /* Space between letters */
+}
+/* Style for the header */
+header {
+    display: flex;
+    justify-content: space-between; /* Spread elements to left, center, and right */
+    align-items: center; /* Align everything in the same row */
+    padding: 10px 20px;
+    z-index: 1;
+    width: 100%; /* Ensure the header takes up the full width of the page */
+}
+
+
+
+/* Center the language container */
+.language-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-family: 'Arial Black', sans-serif;
+    letter-spacing: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    margin-left: -40px;
+}
+
+/* Style for each language option */
+.language-option {
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin:  30px;
+    text-transform: uppercase;
+    font-size: inherit;
+}
+
+/* Change language color on hover */
+.language-option:hover {
+    color: #b3e6ff;
+}
+
+/* Navigation styling (aligned right) */
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+/* Navigation links styling */
+nav ul li {
+    margin-left: 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #b3e6ff;
+}
+
+/* Instagram logo styling */
+.instagram-logo {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
