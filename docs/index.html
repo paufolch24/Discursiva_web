@@ -28,6 +28,7 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            position: relative;
         }
 
         .background {
@@ -44,62 +45,61 @@
 
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Centers the menu horizontally */
             align-items: center;
-            z-index: 1;
             padding: 10px;
+            z-index: 1;
         }
 
-        /* Vertical Menu Styling with Disc Black font */
-        .vertical-menu {
+        /* Horizontal Menu Styling with Disc Black font */
+        .horizontal-menu {
             display: flex;
-            flex-direction: column;
-            position: fixed;
-            top: 100px; /* Moves the menu down from the top */
-            left: 10px; /* Aligns the menu to the left side of the page */
-            z-index: 2;
+            flex-direction: row;
+            gap: 50px; /* Space between links */
         }
 
-        .vertical-menu a {
-            display: block; /* Ensure each item is stacked vertically */
-            text-align: left; /* Align text to the left */
+        .horizontal-menu a {
+            display: inline-block; /* Display links horizontally */
+            text-align: center;
             text-transform: uppercase;
             color: #fff;
-            font-family: 'Disc Black', sans-serif; /* Applying the Disc Black font */
-            font-size: 1.5rem; /* Larger font for visibility */
+            font-family: 'Disc Black', sans-serif;
+            font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
-            margin-bottom: 20px; /* Space between links */
-            transition: color 0.3s; /* Add transition for color */
-            position: relative; /* For the line effect */
+            transition: color 0.3s;
+            position: relative;
         }
 
-        .vertical-menu a:hover {
+        .horizontal-menu a:hover {
             color: #b3e6ff;
         }
 
-        /* Line under active and hovered links */
-        .vertical-menu a::after {
+        .horizontal-menu a::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: -5px; /* Position line below the text */
+            bottom: -5px;
             width: 100%;
-            height: 2px; /* Height of the line */
-            background: transparent; /* Initially transparent */
+            height: 2px;
+            background: transparent;
             transition: background 0.3s;
         }
 
-        .vertical-menu a.active::after,
-        .vertical-menu a:hover::after {
-            background: #b3e6ff; /* Line color */
+        .horizontal-menu a.active::after,
+        .horizontal-menu a:hover::after {
+            background: #b3e6ff;
         }
 
-        /* Language toggle styling */
+        /* Language toggle styling at the bottom center */
         .language-container {
             display: flex;
             justify-content: center;
             align-items: center;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .language-option {
@@ -114,35 +114,6 @@
 
         .language-option:hover {
             color: #b3e6ff;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin-left: 15px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #b3e6ff;
-        }
-
-        .instagram-logo {
-            width: 30px;
-            height: 30px;
-            margin-left: 10px;
-            cursor: pointer;
         }
 
         main {
@@ -162,10 +133,23 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             position: relative;
             margin: 20px auto;
-            display: none; /* Initially hidden */
+            display: none;
             opacity: 0;
             transition: opacity 0.5s;
         }
+        footer {
+            position: fixed;          /* Fixes the footer's position */
+            bottom: 0;                /* Positions the footer at the bottom */
+            left: 50%;                /* Centers the footer horizontally */
+            transform: translateX(-50%); /* Adjusts the horizontal centering */
+            color: #fff;              /* Changes text color to white */
+            font-size: 1.2rem;        /* Adjusts font size */
+            text-align: center;       /* Centers the text inside the footer */
+            width: 100%;              /* Ensures the footer spans the full width */
+            padding: 10px 0;          /* Adds some padding for spacing */
+            background: none;         /* No background color */
+        }
+
 
         .letter-cart p {
             color: #fff;
@@ -192,32 +176,14 @@
     <div class="background"></div>
 
     <header>
-        <!-- Vertical Menu on the left -->
-        <div class="vertical-menu">
+        <!-- Horizontal Menu -->
+        <div class="horizontal-menu">
             <a class="active" id="homeLink" href="index.html">Home</a> <!-- Default active link -->
             <a id="aboutLink" href="javascript:void(0);">About Us</a> <!-- Click triggers the letter -->
             <a id="eventsLink" href="events.html">Events</a>
             <a id="teamLink" href="team.html">Team</a>
-            <a id="contactLink" href="contact.html">Contact</a>
+            <a id="contactLink" href="contact.html">Contact</a> <!-- Contact link -->
         </div>
-
-        <!-- Language container in the center -->
-        <div class="language-container">
-            <span class="language-option" id="catOption">CAT</span> |
-            <span class="language-option" id="engOption">ENG</span> |
-            <span class="language-option" id="espOption">ESP</span>
-        </div>
-
-        <!-- Navigation (Events and Instagram) on the right -->
-        <nav>
-            <ul>
-                <li>
-                    <a href="https://www.instagram.com/ladiscursiva/" target="_blank">
-                        <img src="path/to/inst.png" alt="Instagram Logo" class="instagram-logo">
-                    </a>
-                </li>
-            </ul>
-        </nav>
     </header>
 
     <main>
@@ -229,7 +195,32 @@
         </div>
     </main>
 
+    <!-- Language container at the bottom center -->
+    <div class="language-container">
+        <span class="language-option" id="catOption">CAT</span> |
+        <span class="language-option" id="engOption">ENG</span> |
+        <span class="language-option" id="espOption">ESP</span>
+    </div>
+
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname.split('/').pop(); // Gets the current page file name
+
+            // Set the active link based on the current page
+            const links = {
+                'index.html': 'homeLink',
+                'about.html': 'aboutLink',
+                'events.html': 'eventsLink',
+                'team.html': 'teamLink',
+                'contact.html': 'contactLink'
+            };
+
+            const activeLink = links[currentPath];
+            if (activeLink) {
+                setActiveLink(activeLink);
+            }
+        });
+
         // Show the letter when "About Us" is clicked
         document.getElementById('aboutLink').addEventListener('click', function() {
             const letterCart = document.getElementById('letterCart');
@@ -252,7 +243,7 @@
 
         // Function to update the active link and display the line
         function setActiveLink(linkId) {
-            const links = document.querySelectorAll('.vertical-menu a');
+            const links = document.querySelectorAll('.horizontal-menu a');
             links.forEach(link => {
                 link.classList.remove('active');
             });
@@ -263,57 +254,38 @@
         const texts = {
             cat: {
                 welcome: "Benvingut a <strong>La Discursiva</strong>, una associació cultural originària de Reus, motivada per el nostre amor per les converses profundes i la dansa. Som un grup d'amics amb un profund entusiasme per la música house i techno, dedicat a crear espais on la nostra comunitat pugui connectar, expressar-se i expandir-se. La nostra missió és explorar nous horitzons, unint les persones en l'esperit de l'art, la música i la cultura.",
-                contact: "Estem expandint els nostres límits més enllà de la nostra ciutat natal, connectant amb comunitats arreu. Per a qualsevol consulta comercial, no dubteu a contactar-nos a <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Seguiu el nostre viatge a Instagram a <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> per actualitzacions sobre els nostres últims esdeveniments i projectes.",
-                events: "Esdeveniments",
-                about: "Sobre Nosaltres",
-                team: "Equip",
-                contact: "Contacte"
+                contact: "Estem expandint els nostres límits més enllà de la nostra ciutat natal, connectant amb comunitats arreu. Per a qualsevol consulta comercial, no dubteu a contactar-nos a ladiscursiva@gmail.com. Seguiu el nostre viatge a Instagram a @ladiscursiva per actualitzacions sobre els nostres últims esdeveniments i projectes."
             },
             eng: {
-                welcome: "Welcome to <strong>La Discursiva</strong>, a passionate cultural association originally from Reus, motivated by our love for deep conversations and dance. We are a group of friends with a profound enthusiasm for house and techno music, dedicated to creating spaces where our community can connect, express, and expand. Our mission is to explore new horizons, bringing people together in the spirit of art, music, and culture.",
-                contact: "We are expanding our limits beyond our hometown, connecting with communities everywhere. For any business inquiries, feel free to reach out to us at <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Follow our journey on Instagram at <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> for updates on our latest events and projects.",
-                events: "Events",
-                about: "About Us",
-                team: "Team",
-                contact: "Contact"
+                welcome: "Welcome to <strong>La Discursiva</strong>, a cultural association originating from Reus, driven by our love for deep conversations and dance. We are a group of friends with a deep enthusiasm for house and techno music, dedicated to creating spaces where our community can connect, express themselves, and grow. Our mission is to explore new horizons, uniting people in the spirit of art, music, and culture.",
+                contact: "We are expanding our boundaries beyond our hometown, connecting with communities all around. For any business inquiries, feel free to contact us at ladiscursiva@gmail.com. Follow our journey on Instagram at @ladiscursiva for updates on our latest events and projects."
             },
             esp: {
-                welcome: "Bienvenido a <strong>La Discursiva</strong>, una apasionada asociación cultural originaria de Reus, motivada por nuestro amor por las conversaciones profundas y la danza. Somos un grupo de amigos con un profundo entusiasmo por la música house y techno, dedicados a crear espacios donde nuestra comunidad pueda conectar, expresarse y expandirse. Nuestra misión es explorar nuevos horizontes, uniendo a las personas en el espíritu del arte, la música y la cultura.",
-                contact: "Estamos expandiendo nuestros límites más allá de nuestra ciudad natal, conectando con comunidades en todas partes. Para cualquier consulta comercial, no dude en comunicarse con nosotros a <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Siga nuestro viaje en Instagram en <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> para actualizaciones sobre nuestros últimos eventos y proyectos.",
-                events: "Eventos",
-                about: "Sobre Nosotros",
-                team: "Equipo",
-                contact: "Contacto"
+                welcome: "Bienvenido a <strong>La Discursiva</strong>, una asociación cultural originaria de Reus, motivada por nuestro amor por las conversaciones profundas y la danza. Somos un grupo de amigos con un profundo entusiasmo por la música house y techno, dedicados a crear espacios donde nuestra comunidad pueda conectarse, expresarse y crecer. Nuestra misión es explorar nuevos horizontes, uniendo a las personas en el espíritu del arte, la música y la cultura.",
+                contact: "Estamos expandiendo nuestros límites más allá de nuestra ciudad natal, conectándonos con comunidades de todo el mundo. Para cualquier consulta comercial, no dudes en contactarnos a ladiscursiva@gmail.com. Sigue nuestro viaje en Instagram en @ladiscursiva para actualizaciones sobre nuestros últimos eventos y proyectos."
             }
         };
 
-        // Set language event listeners
-        document.getElementById('catOption').addEventListener('click', () => {
-            updateLanguage('cat');
-            setActiveLink('homeLink');
-        });
-        document.getElementById('engOption').addEventListener('click', () => {
-            updateLanguage('eng');
-            setActiveLink('homeLink');
-        });
-        document.getElementById('espOption').addEventListener('click', () => {
-            updateLanguage('esp');
-            setActiveLink('homeLink');
+        document.getElementById('catOption').addEventListener('click', function() {
+            changeLanguage('cat');
         });
 
-        function updateLanguage(language) {
-            document.getElementById('welcomeText').innerHTML = texts[language].welcome;
-            document.getElementById('contactText').innerHTML = texts[language].contact;
-            document.getElementById('eventsLink').textContent = texts[language].events;
-            document.getElementById('aboutLink').textContent = texts[language].about;
-            document.getElementById('teamLink').textContent = texts[language].team;
-            document.getElementById('contactLink').textContent = texts[language].contact;
+        document.getElementById('engOption').addEventListener('click', function() {
+            changeLanguage('eng');
+        });
+
+        document.getElementById('espOption').addEventListener('click', function() {
+            changeLanguage('esp');
+        });
+
+        function changeLanguage(lang) {
+            document.getElementById('welcomeText').innerHTML = texts[lang].welcome;
+            document.getElementById('contactText').innerHTML = texts[lang].contact;
         }
-
-        // Set default active link on page load
-        window.onload = function() {
-            setActiveLink('homeLink');
-        };
     </script>
+    
+    <footer>
+        <p>&copy; 2023 La Discursiva. All rights reserved.</p>
+    </footer>
 </body>
 </html>

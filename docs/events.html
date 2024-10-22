@@ -26,21 +26,42 @@
             color: #333; /* Dark text color */
         }
 
-        h2 {
-            margin: 30px 0; /* Space above and below title */
-            text-align: center; /* Center title */
-            font-size: 3rem; /* Increased font size */
-            color: white; /* White text color */
-            font-family: 'Disc Black', sans-serif; /* Apply Disc Black font */
+        /* Menu bar */
+        .menu-bar {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Dark background for menu */
+            padding: 10px 0; /* Padding for the menu */
+            position: fixed; /* Keep menu at the top */
+            top: 0;
+            z-index: 1; /* Ensure menu is above background */
         }
 
-        /* Logo styling */
-        .logo {
-            position: absolute;
-            top: 20px; /* Adjust vertical position */
-            left: 20px; /* Adjust horizontal position */
-            width: 40px; /* Adjust width of the logo to be smaller */
-            cursor: pointer; /* Change cursor to pointer */
+        .menu-bar a {
+            color: #fff;
+            font-family: 'Disc Black', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .menu-bar a:hover {
+            color: #b3e6ff;
+        }
+
+        /* Highlight the active Events page */
+        .menu-bar a.active {
+            color: #b3e6ff;
+            border-bottom: 2px solid #b3e6ff; /* Underline active link */
+        }
+
+        /* Remove the title styles */
+        h2 {
+            display: none; /* Hide the title */
         }
 
         /* Image grid styling */
@@ -49,6 +70,7 @@
             grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns */
             gap: 20px; /* Space between images */
             margin: 20px;
+            margin-top: 100px; /* Space from the top to avoid overlap with the menu */
         }
 
         .image-item {
@@ -115,13 +137,17 @@
     </style>
 </head>
 <body>
-    <a href="index.html">
-        <img src="path/to/home.webp" alt="La Discursiva Logo" class="logo"> <!-- Replace with your logo path -->
-    </a>
-    
+    <!-- Menu bar -->
+    <div class="menu-bar">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="events.html" class="active">Events</a> <!-- Active event link -->
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
     <main>
         <section id="events">
-            <h2>Events</h2>
             <div class="image-grid">
                 <div class="image-item" onclick="openModal('path/to/summer.jpg')">
                     <img src="path/to/summer.jpg" alt="Summer Festival">
@@ -167,7 +193,7 @@
                     </div>
                 </div>
                 <!-- Second row of images -->
-                <div class="image-item" onclick="openModal('path/to/image5.jpg')">
+                <div class="image-item" onclick="openModal('path/to/perlo2.jpg')">
                     <img src="path/to/perlo2.jpg" alt="Description for Image 5">
                     <div class="description">
                         <strong>XtraPerlo</strong><br>
@@ -177,7 +203,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="image-item" onclick="openModal('path/to/image6.jpg')">
+                <div class="image-item" onclick="openModal('path/to/botanic.jpg')">
                     <img src="path/to/botanic.jpg" alt="Description for Image 6">
                     <div class="description">
                         <strong>The Botanical Night</strong><br>
