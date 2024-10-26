@@ -27,13 +27,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Set the headers
     $headers = "From: $email\r\n"; // Use the user's email as the sender
     $headers .= "Reply-To: $email\r\n"; // Set the reply-to header
-    $headers .= "Content-Type: text/plain; charset=utf-8\r\n"; // Set content type
 
     // Send the email
     if (mail($to, $subject, $message, $headers)) {
-        // Redirect to contact page with success message
+        // Redirect to contact page with a success message
         header("Location: contact.html?success=true");
-        exit; // Always exit after redirect
+        exit;
     } else {
         echo "Failed to send email.";
     }

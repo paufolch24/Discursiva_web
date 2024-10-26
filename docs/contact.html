@@ -9,9 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Disc+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Disc+Black&display=swap" rel="stylesheet"> 
 
     <style>
-        /* Global Styles */
+        /* Resetting styles */
         * {
             margin: 0;
             padding: 0;
@@ -19,105 +21,130 @@
         }
 
         body {
-            background-color: #fff;
-            font-family: 'Merienda', cursive;
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Center vertically */
-            align-items: center; /* Center horizontally */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            background-image: url('path/to/fondo1.jpg'); /* Background image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Make background dynamic */
+            color: #333; /* Dark text color */
+            display: flex; /* Enable flexbox */
+            flex-direction: column; /* Arrange children vertically */
+            align-items: center; /* Center children horizontally */
+            justify-content: center; /* Center children vertically */
+            min-height: 100vh; /* Ensure full height */
         }
 
-        .background {
-            background-image: url('path/to/fondo1.jpg'); /* Update with actual image path */
-            background-size: cover;
-            background-position: center;
+        /* Set header with fixed positioning and center the menu */
+        header {
             position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: -1;
-        }
-
-        /* Menu bar */
-        .menu-bar {
+            top: 0; /* Set the distance from the top to 0 */
+            width: 100%; /* Full width for centering */
             display: flex;
-            justify-content: center;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 10px 0;
-            position: fixed; /* Keep menu at the top */
-            top: 0;
-            z-index: 1; /* Ensure menu is above background */
+            justify-content: center; /* Center horizontally */
+            z-index: 1;
+            transition: transform 0.3s; /* Smooth transition for hiding */
+        }
+        .instagram-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2;
         }
 
-        .menu-bar a {
+        .instagram-icon img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+
+        .instagram-icon img:hover {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+        /* Styling the horizontal menu inside the header */
+        .horizontal-menu {
+            display: flex;
+            flex-direction: row;
+            gap: 50px; /* Space between menu items */
+        }
+
+        .horizontal-menu a {
+            margin-top: 10px; /* Margin for vertical alignment */
+            text-align: center;
+            text-transform: uppercase;
             color: #fff;
             font-family: 'Disc Black', sans-serif;
             font-size: 1.5rem;
             font-weight: bold;
-            text-transform: uppercase;
             text-decoration: none;
-            margin: 0 20px;
             transition: color 0.3s;
+            position: relative;
         }
 
-        .menu-bar a:hover {
+        .horizontal-menu a:hover {
             color: #b3e6ff;
         }
 
-        /* Highlight the active Contact page */
-        .menu-bar a.active {
-            color: #b3e6ff;
-            border-bottom: 2px solid #b3e6ff;
+        .horizontal-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: transparent;
+            transition: background 0.3s;
         }
 
-        /* Form styling */
+        .horizontal-menu a.active::after,
+        .horizontal-menu a:hover::after {
+            background: #b3e6ff;
+        }
+
+        /* Contact Form Styling */
         .contact-form {
-            background-color: black; /* Solid black background */
+            background-color: #000;
             border-radius: 10px;
-            padding: 30px; /* Add padding inside the form */
-            width: 90%;
-            max-width: 600px; /* Set maximum width */
-            color: #fff; /* Change text color to white for better contrast */
-            text-align: center; /* Center text */
-            margin-top: 100px; /* Space from the top */
+            padding: 60px; /* Increased padding */
+            width: 95%; /* Adjusted width */
+            max-width: 700px; /* Adjusted max width */
+            color: #fff;
+            text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            margin-top: 50px; /* Decreased top margin */
         }
 
         .contact-form h1 {
             margin-bottom: 20px;
             font-size: 2.5rem;
+            color: #b3e6ff;
         }
 
-        /* Align Name, Email, and Phone on the same row */
         .form-row {
             display: flex;
             justify-content: space-between;
-            gap: 10px; /* Adjust gap between the input fields */
+            gap: 10px;
             margin-bottom: 20px;
         }
 
         .form-row input {
-            width: calc(33.33% - 10px); /* Makes all inputs equal width */
-            padding: 10px;
+            width: calc(33.33% - 10px);
+            padding: 15px;
             font-size: 1.2rem;
             border-radius: 5px;
             border: none;
         }
 
-        /* Description area */
         .form-row-wide {
             margin-bottom: 20px;
         }
 
         .form-row-wide textarea {
             width: 100%;
-            height: 100px;
-            padding: 10px;
+            height: 150px;
+            padding: 15px;
             font-size: 1.2rem;
             border-radius: 5px;
             border: none;
@@ -133,14 +160,13 @@
             cursor: pointer;
             transition: background-color 0.3s;
             border-radius: 5px;
-            margin-top: 20px; /* Space above the button */
+            margin-top: 20px;
         }
 
         .contact-form button:hover {
             background-color: #fff;
         }
 
-        /* Footer */
         footer {
             position: fixed;
             bottom: 0;
@@ -157,33 +183,32 @@
 </head>
 <body>
 
-    <div class="background"></div>
-
-    <!-- Menu bar -->
-    <div class="menu-bar">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="events.html">Events</a>
-        <a href="team.html">Team</a>
-        <a href="contact.html" class="active">Contact</a>
+    <header id="header">
+        <div class="horizontal-menu">
+            <a href="index.html">Home</a>
+            <a href="index.html">About Us</a>
+            <a href="events.html">Events</a>
+            <a href="team.html">Team</a>
+            <a href="contact.html" class="active">Contact</a> <!-- Active link for Contact -->
+        </div>
+    </header>
+    <div class="instagram-icon">
+        <a href="https://www.instagram.com/ladiscursiva/" target="_blank">
+            <img src="path/to/inst.png" alt="Instagram Logo">
+        </a>
     </div>
-
     <!-- Contact Form -->
     <div class="contact-form">
         <h1>Contact Us</h1>
         <form id="contactForm" action="send_email.php" method="POST">
-            <!-- Row with Name, Email, Phone -->
             <div class="form-row">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="tel" name="phone" placeholder="Phone" required>
             </div>
-
-            <!-- Description row -->
             <div class="form-row-wide">
                 <textarea name="description" placeholder="Description" required></textarea>
             </div>
-
             <button type="submit">Send</button>
         </form>
     </div>
@@ -192,15 +217,30 @@
         <p>&copy; 2023 La Discursiva. All rights reserved.</p>
     </footer>
 
-    <!-- Validate the form before submitting -->
+    <!-- JavaScript for header scroll behavior and form validation -->
     <script>
+        const header = document.getElementById('header');
+        let lastScrollTop = 0; // Variable to track the last scroll position
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop; // Get current scroll position
+
+            // If scrolling down
+            if (scrollTop > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)'; // Hide the header
+            } else {
+                header.style.transform = 'translateY(0)'; // Show the header
+            }
+            lastScrollTop = scrollTop; // Update the last scroll position
+        });
+
+        // Validate the form before submitting
         document.getElementById('contactForm').addEventListener('submit', function(event) {
             const name = document.querySelector('input[name="name"]').value.trim();
             const email = document.querySelector('input[name="email"]').value.trim();
             const phone = document.querySelector('input[name="phone"]').value.trim();
             const description = document.querySelector('textarea[name="description"]').value.trim();
 
-            // Simple validation
             if (!name || !email || !phone || !description) {
                 event.preventDefault();
                 alert('Please fill in all fields.');
