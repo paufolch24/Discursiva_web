@@ -1,42 +1,31 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data
-    $name = htmlspecialchars(trim($_POST['name']));
-    $email = htmlspecialchars(trim($_POST['email']));
-    $phone = htmlspecialchars(trim($_POST['phone']));
-    $description = htmlspecialchars(trim($_POST['description']));
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $description = trim($_POST['description']);
 
-    // Validate email
+    // Validate email format
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email format";
+        header("Location: contact.html?status=invalid_email");
         exit;
     }
 
-    // Set the recipient email address
+    // Email details
     $to = "ladiscursiva@gmail.com";
+    $subject = "New Contact Us Form Submission";
+    $message = "Name: $name\nEmail: $email\n\nMessage:\n$description";
+    $headers = "From: $email";
 
-    // Set the email subject
-    $subject = "Contact from: $name";
-
-    // Set the email message
-    $message = "Name: $name\n";
-    $message .= "Email: $email\n";
-    $message .= "Phone: $phone\n";
-    $message .= "Description: $description\n";
-
-    // Set the headers
-    $headers = "From: $email\r\n"; // Use the user's email as the sender
-    $headers .= "Reply-To: $email\r\n"; // Set the reply-to header
-
-    // Send the email
+    // Attempt to send the email
     if (mail($to, $subject, $message, $headers)) {
-        // Redirect to contact page with a success message
-        header("Location: contact.html?success=true");
-        exit;
+        header("Location: contact.html?status=success"); // Redirect with success status
     } else {
-        echo "Failed to send email.";
+        header("Location: contact.html?status=error"); // Redirect with error status
     }
+    exit();
 } else {
-    echo "Invalid request method.";
+    header("Location: contact.html?status=invalid_request");
+    exit();
 }
 ?>
+

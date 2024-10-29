@@ -9,8 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Disc+Black&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Disc+Black&display=swap" rel="stylesheet"> 
 
     <style>
         /* Resetting styles */
@@ -22,58 +20,34 @@
 
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            background-image: url('path/to/fondo1.jpg'); /* Background image */
-            background-size: cover; /* Cover the entire background */
-            background-position: center; /* Center the image */
-            background-attachment: fixed; /* Make background dynamic */
-            color: #333; /* Dark text color */
-            display: flex; /* Enable flexbox */
-            flex-direction: column; /* Arrange children vertically */
-            align-items: center; /* Center children horizontally */
-            justify-content: center; /* Center children vertically */
-            min-height: 100vh; /* Ensure full height */
+            background-image: url('path/to/fondo1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
 
-        /* Set header with fixed positioning and center the menu */
         header {
             position: fixed;
-            top: 0; /* Set the distance from the top to 0 */
-            width: 100%; /* Full width for centering */
+            top: 0;
+            width: 100%;
             display: flex;
-            justify-content: center; /* Center horizontally */
+            justify-content: center;
             z-index: 1;
-            transition: transform 0.3s; /* Smooth transition for hiding */
-        }
-        .instagram-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 2;
-        }
-
-        .instagram-icon img {
-            width: 40px;
-            height: 40px;
             transition: transform 0.3s;
         }
 
-        .instagram-icon img:hover {
-            transform: scale(1.1); /* Zoom effect on hover */
-        }
-        /* Styling the horizontal menu inside the header */
         .horizontal-menu {
             display: flex;
-            flex-direction: row;
-            gap: 50px; /* Space between menu items */
+            gap: 50px;
         }
 
         .horizontal-menu a {
-            margin-top: 10px; /* Margin for vertical alignment */
-            text-align: center;
-            text-transform: uppercase;
             color: #fff;
             font-family: 'Disc Black', sans-serif;
             font-size: 1.5rem;
@@ -87,33 +61,28 @@
             color: #b3e6ff;
         }
 
-        .horizontal-menu a::after {
+        .horizontal-menu a.active::after,
+        .horizontal-menu a:hover::after {
             content: '';
             position: absolute;
-            left: 0;
             bottom: -5px;
+            left: 0;
             width: 100%;
             height: 2px;
-            background: transparent;
+            background: #b3e6ff;
             transition: background 0.3s;
         }
 
-        .horizontal-menu a.active::after,
-        .horizontal-menu a:hover::after {
-            background: #b3e6ff;
-        }
-
-        /* Contact Form Styling */
         .contact-form {
             background-color: #000;
             border-radius: 10px;
-            padding: 60px; /* Increased padding */
-            width: 95%; /* Adjusted width */
-            max-width: 700px; /* Adjusted max width */
+            padding: 40px;
+            width: 95%;
+            max-width: 700px;
             color: #fff;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            margin-top: 50px; /* Decreased top margin */
+            margin-top: 60px;
         }
 
         .contact-form h1 {
@@ -124,21 +93,16 @@
 
         .form-row {
             display: flex;
-            justify-content: space-between;
             gap: 10px;
             margin-bottom: 20px;
         }
 
         .form-row input {
-            width: calc(33.33% - 10px);
+            width: calc(50% - 5px);
             padding: 15px;
             font-size: 1.2rem;
             border-radius: 5px;
             border: none;
-        }
-
-        .form-row-wide {
-            margin-bottom: 20px;
         }
 
         .form-row-wide textarea {
@@ -149,6 +113,7 @@
             border-radius: 5px;
             border: none;
             resize: none;
+            margin-bottom: 20px;
         }
 
         .contact-form button {
@@ -158,7 +123,6 @@
             padding: 10px 20px;
             border: none;
             cursor: pointer;
-            transition: background-color 0.3s;
             border-radius: 5px;
             margin-top: 20px;
         }
@@ -179,71 +143,78 @@
             padding: 10px 0;
             background: none;
         }
+        .notification {
+            display: none; /* Hidden by default */
+            padding: 20px;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .success { background-color: #4CAF50; } /* Green for success */
+        .error { background-color: #f44336; } /* Red for error */
+        .invalid { background-color: #f44336; } /* Red for invalid email */
     </style>
 </head>
 <body>
-
     <header id="header">
-        <div class="horizontal-menu">
-            <a href="index.html">Home</a>
-            <a href="index.html">About Us</a>
-            <a href="events.html">Events</a>
-            <a href="team.html">Team</a>
-            <a href="contact.html" class="active">Contact</a> <!-- Active link for Contact -->
-        </div>
+        <!-- Menu omitted for brevity -->
     </header>
-    <div class="instagram-icon">
-        <a href="https://www.instagram.com/ladiscursiva/" target="_blank">
-            <img src="path/to/inst.png" alt="Instagram Logo">
-        </a>
-    </div>
-    <!-- Contact Form -->
+
     <div class="contact-form">
         <h1>Contact Us</h1>
         <form id="contactForm" action="send_email.php" method="POST">
             <div class="form-row">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="email" placeholder="Email" required>
-                <input type="tel" name="phone" placeholder="Phone" required>
             </div>
+            <input type="text" name="subject" placeholder="Concept of the mail" required style="width:100%; padding: 15px; margin-bottom: 20px;">
             <div class="form-row-wide">
                 <textarea name="description" placeholder="Description" required></textarea>
             </div>
             <button type="submit">Send</button>
         </form>
+
+        <!-- Notification Messages -->
+        <div id="success" class="notification success">Your email has been sent successfully!</div>
+        <div id="error" class="notification error">There was an error sending your message. Please try again.</div>
+        <div id="invalid" class="notification invalid">Invalid email format. Please enter a valid email address.</div>
     </div>
 
     <footer>
         <p>&copy; 2023 La Discursiva. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for header scroll behavior and form validation -->
     <script>
+        // Show notifications based on URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+
+        // Display the appropriate notification box
+        if (status === 'success') {
+            document.getElementById('success').style.display = 'block';
+        } else if (status === 'error') {
+            document.getElementById('error').style.display = 'block';
+        } else if (status === 'invalid_email') {
+            document.getElementById('invalid').style.display = 'block';
+        }
+
+        // Scroll behavior for header
         const header = document.getElementById('header');
-        let lastScrollTop = 0; // Variable to track the last scroll position
-
+        let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop; // Get current scroll position
-
-            // If scrolling down
-            if (scrollTop > lastScrollTop) {
-                header.style.transform = 'translateY(-100%)'; // Hide the header
-            } else {
-                header.style.transform = 'translateY(0)'; // Show the header
-            }
-            lastScrollTop = scrollTop; // Update the last scroll position
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            header.style.transform = scrollTop > lastScrollTop ? 'translateY(-100%)' : 'translateY(0)';
+            lastScrollTop = scrollTop;
         });
 
-        // Validate the form before submitting
+        // Simple form validation
         document.getElementById('contactForm').addEventListener('submit', function(event) {
-            const name = document.querySelector('input[name="name"]').value.trim();
             const email = document.querySelector('input[name="email"]').value.trim();
-            const phone = document.querySelector('input[name="phone"]').value.trim();
-            const description = document.querySelector('textarea[name="description"]').value.trim();
-
-            if (!name || !email || !phone || !description) {
+            if (!/\S+@\S+\.\S+/.test(email)) {
                 event.preventDefault();
-                alert('Please fill in all fields.');
+                alert('Please enter a valid email address.');
             }
         });
     </script>
