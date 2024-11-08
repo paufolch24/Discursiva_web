@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - La Discursiva</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Disc+Black&display=swap" rel="stylesheet">
+    <style>
+        /* Resetting styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('path/to/fondo1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .instagram-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+
+        .instagram-icon img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+
+        .instagram-icon img:hover {
+            transform: scale(1.1);
+        }
+
+        .horizontal-menu {
+            display: flex;
+            flex-direction: row;
+            gap: 50px;
+        }
+
+        .horizontal-menu a {
+            margin-top: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            color: #fff;
+            font-family: 'Disc Black', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .horizontal-menu a:hover {
+            color: #b3e6ff;
+        }
+
+        .horizontal-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: transparent;
+            transition: background 0.3s;
+        }
+
+        .horizontal-menu a.active::after,
+        .horizontal-menu a:hover::after {
+            background: #b3e6ff;
+        }
+
+        h2 {
+            display: none;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 20px;
+            margin-top: 100px;
+        }
+
+        .image-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(0.85);
+            transition: transform 0.2s;
+        }
+
+        .image-item:hover {
+            transform: scale(1);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .description {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1em;
+            padding: 5px;
+        }
+
+        .details {
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        footer {
+            text-align: center;
+            margin: 20px 0;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="horizontal-menu">
+            <a href="index.html">Home</a>
+            <a href="index.html">About Us</a>
+            <a href="events.html">Events</a>
+            <a href="team.html" class="active">Team</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="team">
+            <div class="image-grid">
+                <!-- Team Member 1 -->
+                <div class="image-item" onclick="openModal('path/to/member1.jpg')">
+                    <img src="path/to/member1.jpg" alt="Team Member 1">
+                    <div class="description">
+                        <strong>Alex Rivera</strong><br>
+                        <div class="details">
+                            Position: Lead Event Organizer<br>
+                            Bio: Alex is known for his creative flair and attention to detail. He has been orchestrating memorable events for over a decade.
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="image-item" onclick="openModal('path/to/member2.jpg')">
+                    <img src="path/to/member2.jpg" alt="Team Member 2">
+                    <div class="description">
+                        <strong>Sofia Martinez</strong><br>
+                        <div class="details">
+                            Position: Marketing Director<br>
+                            Bio: Sofia specializes in crafting impactful marketing strategies that resonate with our audience. Her passion shines through every campaign.
+                        </div>
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="image-item" onclick="openModal('path/to/member3.jpg')">
+                    <img src="path/to/member3.jpg" alt="Team Member 3">
+                    <div class="description">
+                        <strong>Diego Torres</strong><br>
+                        <div class="details">
+                            Position: Creative Designer<br>
+                            Bio: Diego’s innovative designs give our events a unique look and feel. He’s the mastermind behind the visual concepts you see at every event.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="imageModal" onclick="closeModal()">
+        <img id="modalImage" src="" alt="Modal Image">
+    </div>
+    <div class="instagram-icon">
+        <a href="https://www.instagram.com/ladiscursiva/" target="_blank">
+            <img src="path/to/inst.png" alt="Instagram Logo">
+        </a>
+    </div>
+    <footer>
+        <p>&copy; 2023 La Discursiva. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        function openModal(imageSrc) {
+            const modal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+            modalImage.src = imageSrc;
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("imageModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>

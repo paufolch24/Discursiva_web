@@ -10,306 +10,226 @@
     <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Disc+Black&display=swap" rel="stylesheet"> <!-- Add Disc Black font -->
     <style>
-        /* Reset margins and paddings */
+        /* Reset de estilos básicos para consistencia */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
+        /* Estilos principales del cuerpo */
         body {
-            background-color: #fff;
             font-family: 'Merienda', cursive;
             color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow-x: hidden;
-            position: relative;
+            min-height: 100vh;
+            background-image: url('path/to/puesta.jpg'); /* Cambia 'path/to/puesta.jpg' a la ruta de tu imagen */
+            background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+            background-position: center; /* Centra la imagen en la pantalla */
+            background-repeat: no-repeat; /* Evita que la imagen se repita */
+            background-attachment: fixed; /* Hace que el fondo esté fijo al hacer scroll */
         }
 
-        .background {
-            background-image: url('path/to/fondo1.jpg');
-            background-size: cover;
-            background-position: center;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: -1;
-        }
-
+        /* Estilos para la cabecera */
         header {
             display: flex;
-            justify-content: center; /* Centers the menu horizontally */
+            justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            z-index: 1;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #333;
         }
 
-        /* Horizontal Menu Styling with Disc Black font */
-        .horizontal-menu {
-            display: flex;
-            flex-direction: row;
-            gap: 50px; /* Space between links */
+        .email-text {
+            font-size: 1rem;
+            font-weight: bold;
         }
 
-        .horizontal-menu a {
-            display: inline-block; /* Display links horizontally */
-            text-align: center;
-            text-transform: uppercase;
-            color: #fff;
+        .center-menu {
             font-family: 'Disc Black', sans-serif;
             font-size: 1.5rem;
             font-weight: bold;
-            text-decoration: none;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .horizontal-menu a:hover {
-            color: #b3e6ff;
-        }
-
-        .horizontal-menu a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 2px;
-            background: transparent;
-            transition: background 0.3s;
-        }
-
-        .horizontal-menu a.active::after,
-        .horizontal-menu a:hover::after {
-            background: #b3e6ff;
-        }
-
-        .language-toggle {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #fff;
-            cursor: pointer;
             text-transform: uppercase;
-            z-index: 2;
-            font-family: 'Disc Black', sans-serif; /* Using Disc Black font */
         }
 
-        .language-options {
-            display: none;
+        .right-menu {
+            font-size: 1.5rem;
+            font-family: 'Disc Black', sans-serif;
+            cursor: pointer;
+        }
+
+        /* Contenedor y estilos del logo */
+        .logo-container {
+            display: flex;
             flex-direction: column;
-            position: absolute;
-            top: 30px;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 5px;
-            padding: 5px; /* Reduced padding for compactness */
-            gap: 2px; /* Minimal spacing between options */
-            font-family: 'Disc Black', sans-serif; /* Apply Disc Black font */
+            align-items: center;
+            margin: 50px 0;
+            text-align: center;
         }
 
-        .language-options .language-option {
-            color: #fff;
-            padding: 3px 5px; /* Reduced padding to make options closer */
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: color 0.3s;
-            font-size: 1rem;
+        .logo {
+            max-width: 60%; /* Tamaño del logo aumentado ligeramente */
         }
 
-        .language-options .language-option:hover {
-            color: #b3e6ff;
+        /* Líneas centradas a los lados del logo */
+        .centered-lines {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
         }
 
-        .instagram-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 2;
+        .line {
+            height: 3px;
+            background-color: #000;
+            width: 100%;
+            margin: 10px 0;
         }
 
-        .instagram-icon img {
-            width: 40px;
+        /* Mensaje de bienvenida debajo del logo */
+        .welcome-message {
+            font-size: 1.5rem;
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        /* Estilos para los íconos de redes sociales */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons img {
+            width: 40px; /* Aumentado el tamaño de los íconos */
             height: 40px;
             transition: transform 0.3s;
         }
 
-        .instagram-icon img:hover {
-            transform: scale(1.1); /* Zoom effect on hover */
+        .social-icons img:hover {
+            transform: scale(1.1); /* Efecto hover */
         }
 
-        main {
-            flex: 1;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .letter-cart {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 2px solid #000;
-            border-radius: 5px;
-            padding: 40px;
-            display: inline-block;
-            max-width: 800px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            position: relative;
-            margin: 20px auto;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
+        /* Footer centrado al final de la página */
         footer {
-            position: fixed;          /* Fixes the footer's position */
-            bottom: 0;                /* Positions the footer at the bottom */
-            left: 50%;                /* Centers the footer horizontally */
-            transform: translateX(-50%); /* Adjusts the horizontal centering */
-            color: #fff;              /* Changes text color to white */
-            font-size: 1.2rem;        /* Adjusts font size */
-            text-align: center;       /* Centers the text inside the footer */
-            width: 100%;              /* Ensures the footer spans the full width */
-            padding: 10px 0;          /* Adds some padding for spacing */
-            background: none;         /* No background color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1rem;
+            padding: 20px;
+            background-color: #fff;
+            color: #333;
+            margin-top: auto; /* Empuja el footer al final */
         }
 
-        .letter-cart p {
-            color: #fff;
-            font-family: 'Nunito';
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.5rem;
+        /* Menú de selección de idiomas en el footer */
+        .language-menu {
+            display: flex;
+            gap: 10px;
+            font-size: 1rem;
+            margin-top: 20px;
             cursor: pointer;
+        }
+
+        .language-menu span {
+            color: #333;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <div class="background"></div>
-
+    <!-- Cabecera con menú y texto de email -->
     <header>
-        <!-- Horizontal Menu -->
-        <div class="horizontal-menu">
-            <a class="active" id="homeLink" href="index.html">Home</a> <!-- Default active link -->
-            <a id="aboutLink" href="javascript:void(0);">About Us</a> <!-- Click triggers the letter -->
-            <a id="eventsLink" href="events.html">Events</a>
-            <a id="teamLink" href="team.html">Team</a>
-            <a id="contactLink" href="contact.html">Contact</a> <!-- Contact link -->
-        </div>
+        <div class="email-text">discursiva@</div>
+        <div class="center-menu"><a href="events.html" style="text-decoration: none; color: #333;">Events</a></div>
+        <div class="right-menu" id="languageLabel">Recents</div>
     </header>
 
+    <!-- Contenido principal -->
     <main>
-        <!-- Letter Cart that appears when About Us is clicked -->
-        <div class="letter-cart" id="letterCart">
-            <button class="close-btn" id="closeBtn">&times;</button>
-            <p id="welcomeText">Benvingut a <strong>La Discursiva</strong>, una passió cultural originària de Reus, motivada per les converses profundes i la dansa. Som un grup d'amics amb un profund entusiasme per la música house i techno, dedicat a crear espais on la nostra comunitat pugui connectar, expressar-se i expandir-se. La nostra missió és explorar nous horitzons, unint les persones en l'esperit de l'art, la música i la cultura.</p>
-            <p id="contactText">Estem expandint els nostres límits més enllà de la nostra ciutat natal, connectant amb comunitats arreu. Per a qualsevol consulta comercial, no dubteu a contactar-nos a <a href="mailto:ladiscursiva@gmail.com" style="color: #fff;">ladiscursiva@gmail.com</a>. Seguiu el nostre viatge a Instagram a <a href="https://instagram.com/ladiscursiva" target="_blank" style="color: #fff;">@ladiscursiva</a> per actualitzacions sobre els nostres últims esdeveniments i projectes.</p>
+        <div class="logo-container">
+            <img src="path/to/Logo5.png" alt="La Discursiva Logo" class="logo"> <!-- Cambiar a la ruta del logo -->
+            <div class="centered-lines">
+                <div class="line"></div>
+            </div>
+            <p class="welcome-message" id="welcomeMessage">
+                We create experiences through music, culture, and space
+            </p>
+            <div class="centered-lines">
+                <div class="line"></div>
+            </div>
+        </div>
+
+        <!-- Íconos de redes sociales centrados debajo del logo -->
+        <div class="social-icons">
+            <a href="https://soundcloud.com/discursiva" target="_blank">
+                <img src="path/to/soundcloud.png" alt="SoundCloud Logo">
+            </a>
+            <a href="https://www.instagram.com/ladiscursiva/" target="_blank">
+                <img src="path/to/instagram.png" alt="Instagram Logo">
+            </a>
+            <a href="https://www.youtube.com/channel/ladiscursiva" target="_blank">
+                <img src="path/to/youtube.png" alt="YouTube Logo">
+            </a>
         </div>
     </main>
-    <div class="instagram-icon">
-        <a href="https://www.instagram.com/ladiscursiva/" target="_blank">
-            <img src="path/to/inst.png" alt="Instagram Logo">
-        </a>
-    </div>
-    <!-- Language Toggle Dropdown -->
-    <div class="language-toggle" id="languageToggle">
-        Lang
-        <div class="language-options" id="languageOptions">
-            <div class="language-option" data-lang="ca">CAT</div>
-            <div class="language-option" data-lang="en">ENG</div>
-            <div class="language-option" data-lang="es">ESP</div>
-        </div>
-    </div>
 
+    <!-- Footer con opciones de idioma y derechos reservados -->
     <footer>
+        <div class="language-menu">
+            <span id="catLang">CAT</span> | <span id="engLang">ENG</span> | <span id="espLang">ESP</span>
+        </div>
         <p>&copy; 2024 La Discursiva. All rights reserved.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const letterCart = document.getElementById('letterCart');
-            const closeBtn = document.getElementById('closeBtn');
-            const aboutLink = document.getElementById('aboutLink');
-            const languageToggle = document.getElementById('languageToggle');
-            const languageOptions = document.getElementById('languageOptions');
-            const languageOptionsDivs = document.querySelectorAll('.language-option');
-            const welcomeText = document.getElementById('welcomeText');
-            const contactText = document.getElementById('contactText');
+            const languageLabel = document.getElementById('languageLabel');
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            
+            // Idioma predeterminado almacenado en localStorage
+            let selectedLanguage = localStorage.getItem('language') || 'ca';
 
-            // Set initial language
-            let selectedLanguage = localStorage.getItem('language') || 'ca'; // Default to Catalan if no language is stored
-
+            // Función para actualizar el idioma en el contenido
             function updateLanguage() {
                 if (selectedLanguage === 'en') {
-                    welcomeText.innerHTML = "Welcome to <strong>La Discursiva</strong>, a cultural passion originating from Reus, motivated by deep conversations and dance. We are a group of friends with a profound enthusiasm for house and techno music, dedicated to creating spaces where our community can connect, express itself, and expand. Our mission is to explore new horizons, uniting people in the spirit of art, music, and culture.";
-                    contactText.innerHTML = "We are expanding our boundaries beyond our hometown, connecting with communities everywhere. For any business inquiries, feel free to contact us at <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Follow our journey on Instagram at <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> for updates on our latest events and projects.";
-                    aboutLink.innerHTML = "About Us"; // Update the link text
-                    document.title = "La Discursiva - English"; // Update the page title
+                    languageLabel.textContent = "What's On";
+                    welcomeMessage.textContent = "We create experiences through music, culture, and space";
                 } else if (selectedLanguage === 'es') {
-                    welcomeText.innerHTML = "Bienvenido a <strong>La Discursiva</strong>, una pasión cultural que se origina en Reus, motivada por conversaciones profundas y danza. Somos un grupo de amigos con un profundo entusiasmo por la música house y techno, dedicados a crear espacios donde nuestra comunidad pueda conectar, expresarse y expandirse. Nuestra misión es explorar nuevos horizontes, uniendo a las personas en el espíritu del arte, la música y la cultura.";
-                    contactText.innerHTML = "Estamos expandiendo nuestras fronteras más allá de nuestra ciudad natal, conectando con comunidades en todas partes. Para consultas comerciales, no dude en contactarnos en <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Siga nuestro viaje en Instagram en <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> para actualizaciones sobre nuestros últimos eventos y proyectos.";
-                    aboutLink.innerHTML = "Sobre Nosotros"; // Update the link text
-                    document.title = "La Discursiva - Español"; // Update the page title
+                    languageLabel.textContent = "Novedades";
+                    welcomeMessage.textContent = "Creamos experiencias a través de la música, la cultura y el espacio";
                 } else {
-                    welcomeText.innerHTML = "Benvingut a <strong>La Discursiva</strong>, una passió cultural originària de Reus, motivada per les converses profundes i la dansa. Som un grup d'amics amb un profund entusiasme per la música house i techno, dedicat a crear espais on la nostra comunitat pugui connectar, expressar-se i expandir-se. La nostra missió és explorar nous horitzons, unint les persones en l'esperit de l'art, la música i la cultura.";
-                    contactText.innerHTML = "Estem expandint els nostres límits més enllà de la nostra ciutat natal, connectant amb comunitats arreu. Per a qualsevol consulta comercial, no dubteu a contactar-nos a <a href='mailto:ladiscursiva@gmail.com' style='color: #fff;'>ladiscursiva@gmail.com</a>. Seguiu el nostre viatge a Instagram a <a href='https://instagram.com/ladiscursiva' target='_blank' style='color: #fff;'>@ladiscursiva</a> per actualitzacions sobre els nostres últims esdeveniments i projectes.";
-                    aboutLink.innerHTML = "Sobre Nosaltres"; // Update the link text
-                    document.title = "La Discursiva - Català"; // Update the page title
+                    languageLabel.textContent = "Recents";
+                    welcomeMessage.textContent = "Creem experiències a través de la música, la cultura i l'espai";
                 }
             }
 
-            updateLanguage(); // Initial language update on load
+            // Llama la función para aplicar el idioma predeterminado al cargar la página
+            updateLanguage();
 
-            // Toggle language options display
-            languageToggle.addEventListener('click', function () {
-                languageOptions.style.display = languageOptions.style.display === 'flex' ? 'none' : 'flex';
+            // Cambios de idioma con los botones en el footer
+            document.getElementById('catLang').addEventListener('click', function () {
+                selectedLanguage = 'ca';
+                localStorage.setItem('language', selectedLanguage);
+                updateLanguage();
             });
 
-            // Language selection
-            languageOptionsDivs.forEach(option => {
-                option.addEventListener('click', function () {
-                    selectedLanguage = this.getAttribute('data-lang');
-                    localStorage.setItem('language', selectedLanguage); // Save selected language
-                    updateLanguage(); // Update text based on selected language
-                    languageOptions.style.display = 'none'; // Hide options after selection
-                });
+            document.getElementById('engLang').addEventListener('click', function () {
+                selectedLanguage = 'en';
+                localStorage.setItem('language', selectedLanguage);
+                updateLanguage();
             });
 
-            // Show the letter cart when About Us is clicked
-            aboutLink.addEventListener('click', function () {
-                letterCart.style.display = 'inline-block'; // Show the letter cart
-                letterCart.style.opacity = '1'; // Make it visible
+            document.getElementById('espLang').addEventListener('click', function () {
+                selectedLanguage = 'es';
+                localStorage.setItem('language', selectedLanguage);
+                updateLanguage();
             });
-
-            // Close button functionality
-            closeBtn.addEventListener('click', function () {
-                letterCart.style.opacity = '0'; // Fade out
-                setTimeout(() => {
-                    letterCart.style.display = 'none'; // Hide after fade out
-                }, 500);
-            });
-
-            // Update the visibility of the letter cart on initial load
-            letterCart.style.display = 'none'; // Ensure letter cart is hidden on load
         });
     </script>
 </body>
